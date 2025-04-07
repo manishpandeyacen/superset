@@ -10,5 +10,5 @@ steps:
       - ssh
       - 'dev-superset'
       - '--zone=asia-south1-c'
-      - '--command=sudo gsutil cp gs://superset-artifacts/main.py /var/www/html/']
+      - '--command=sudo gsutil cp gs://superset-artifacts/intex.html /var/www/html/']
     timeout: 600s
