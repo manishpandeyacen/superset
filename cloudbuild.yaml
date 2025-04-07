@@ -1,16 +1,17 @@
 steps:
-  # Step 1: Copy code to Cloud Storage
   - name: 'gcr.io/cloud-builders/gsutil'
     args: ['cp', '-r', '.', 'gs://superset-artifacts/']
 
-  # Step 2: SSH into VM and deploy (e.g., pull latest code)
+  - name: 'gcr.io/cloud-builders/busybox'
+    args: ['sleep', '30']
+
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - compute
       - ssh
       - 'dev-superset'
       - '--zone=asia-south1-c'
-      - '--command=sudo gsutil cp gs://superset-artifacts/intex.html /var/www/html/'
+      - '--command=sudo gsutil cp gs://superset-artifacts/intex.html /var/www/html/']
     timeout: 600s
 
 options:
