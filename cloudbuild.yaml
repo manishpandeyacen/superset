@@ -1,0 +1,17 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo "➡️ Setting safe directory for git"
+        git config --global --add safe.directory /var/www/html/cicd-static-site
+        echo "✅ Safe directory set"
+        echo "➡️ Connecting to VM and pulling code"
+        gcloud compute ssh anjalikayande443@my-ci-vm \
+          --zone=us-central1-a \
+          --command="cd /var/www/html/cicd-static-site && git pull origin main && sudo cp index.html /var/www/html/"
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+
