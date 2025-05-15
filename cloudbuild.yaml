@@ -9,8 +9,8 @@ steps:
         git config --global --add safe.directory /var/www/html/cicd-static-site
         echo "✅ Safe directory set"
         echo "➡️ Connecting to VM and pulling code"
-        gcloud compute ssh root@ci-cd \
+        gcloud compute ssh manish_p@ci-cd \
           --zone=asia-south1-b \
-          --command="cd /root/superset && git pull origin main && sudo cp /root/superset/index.html /var/www/html/"
+          --command=" sudo -i && cd /root/superset && git pull origin main && sudo cp /root/superset/index.html /var/www/html/"
 options:
   logging: CLOUD_LOGGING_ONLY
