@@ -11,6 +11,6 @@ steps:
         echo "➡️ Connecting to VM and pulling code"
         gcloud compute ssh manish_p@ci-cd \
           --zone=asia-south1-b \
-          --command="cd /var/www/html && git pull origin main && sudo cp index.html /var/www/html/"
+          --command="cd /root/superset && git pull origin main && sudo cp /root/superset/index.html /var/www/html/"
 options:
   logging: CLOUD_LOGGING_ONLY
